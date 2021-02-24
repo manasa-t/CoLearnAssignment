@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/_12sdp"
+    tools:context=".ui.search.FilterFragment"
+    android:background="@color/white">
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_filters_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:text="@string/filters_title"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/iv_filters_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_12sdp"
+        android:tint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_close_white_24dp" />
+    <!-- Order by-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_sort_by_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sort_by"
+        app:layout_constraintStart_toStartOf="@+id/tv_filters_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_filters_title"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_12sdp"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_sort_by"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/tv_sort_by_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_sort_by_title">
+
+        <RadioButton
+            android:id="@+id/rb_relevance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/relevance"
+           >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rb_newest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/newest"
+          >
+
+        </RadioButton>
+    </RadioGroup>
+    <!--color-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_color_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color"
+        app:layout_constraintStart_toStartOf="@+id/tv_filters_title"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_sort_by"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_12sdp"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/tv_sort_by_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_color_title">
+
+        <RadioButton
+            android:id="@+id/rb_any_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/any_color"
+
+            >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rb_black_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/black_white"
+           >
+
+        </RadioButton>
+    </RadioGroup>
+    <!--Orientation-->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_orientation_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/color"
+        app:layout_constraintStart_toStartOf="@+id/tv_filters_title"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_color"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_12sdp"/>
+
+    <RadioGroup
+        android:id="@+id/radio_group_orientation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="@+id/tv_sort_by_title"
+        app:layout_constraintTop_toBottomOf="@+id/tv_orientation_title">
+
+        <RadioButton
+            android:id="@+id/rb_portrait"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/portrait"
+           >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rb_landscape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/landscape"
+            >
+
+        </RadioButton>
+
+        <RadioButton
+            android:id="@+id/rb_square"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/square"
+           >
+
+        </RadioButton>
+    </RadioGroup>
+
+<androidx.appcompat.widget.AppCompatButton
+    android:id="@+id/btn_filters_apply"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@+id/radio_group_orientation"
+    app:layout_constraintStart_toStartOf="@+id/tv_filters_title"
+    android:layout_marginTop="@dimen/_20sdp"
+    android:textSize="@dimen/_14ssp"
+    android:text="@string/apply"
+    android:textColor="@color/purple_700"
+    android:textAllCaps="false"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_filters_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/radio_group_orientation"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_12sdp"
+        android:textSize="@dimen/_14ssp"
+        android:text="@string/clear"
+        android:textColor="@color/purple_700"
+        android:textAllCaps="false"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
