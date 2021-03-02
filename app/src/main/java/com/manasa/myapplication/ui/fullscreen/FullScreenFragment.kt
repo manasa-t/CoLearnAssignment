@@ -6,11 +6,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.github.mikephil.charting.components.AxisBase
 import com.github.mikephil.charting.components.Legend
+import com.github.mikephil.charting.components.YAxis
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -164,8 +166,12 @@ class FullScreenFragment : Fragment() {
 
         chart.xAxis.valueFormatter = xAxisFormatter
         chart.xAxis.labelRotationAngle = -45f
+        chart.setVisibleXRange(5f,10f)
+        chart.setMaxVisibleValueCount(10)
         chart.setPinchZoom(true)
-        chart.isAutoScaleMinMaxEnabled = true
+        chart.isHorizontalScrollBarEnabled = true
+        @RequiresApi(21)
+        chart.isNestedScrollingEnabled = true
         chart.isDragEnabled = true
         chart.setScaleEnabled(true)
         var lineData = LineData(lines.toMutableList() as List<ILineDataSet>?)
