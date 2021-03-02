@@ -1,5 +1,6 @@
 package com.manasa.myapplication.data.repositoryimpl
 
+import PhotoStatsResponse
 import SearchPhotoResponse
 import android.util.Log
 import com.google.gson.Gson
@@ -9,6 +10,7 @@ import com.manasa.myapplication.data.network.NetworkHelper
 import com.manasa.myapplication.data.network.NetworkResponse
 import com.manasa.myapplication.domain.entities.CollectionPhotoResult
 import com.manasa.myapplication.domain.entities.Photo
+import com.manasa.myapplication.domain.entities.PhotoStatsResult
 import com.manasa.myapplication.domain.entities.SearchPhotoResult
 import com.manasa.myapplication.domain.repository.PhotosRepository
 import com.manasa.myapplication.mappers.PhotoMapper
@@ -140,4 +142,27 @@ class PhotoRepositoryImpl : PhotosRepository {
     }
 
 
+
+    override suspend fun getPhotoStats(
+        id: String,
+        resolution: String?,
+        quantity: Int?
+    ): PhotoStatsResult? {
+        return withContext(Dispatchers.IO) {
+            var reqUrl = baseUrl + "photos/" + id + "/statistics" + "?" + apiKey
+            var stringResponse: String?
+
+            var networkResponse = NetworkHelper.getNetworkData(reqUrl, "GET")
+            stringResponse = networkResponse.stringResponse
+            Log.d("network", "photo stats response $stringResponse")
+            if (!stringResponse.isNullOrEmpty()) {
+                var photoStatsResponse =
+                    gson.fromJson(stringResponse, PhotoStatsResponse::class.java)
+
+                PhotoMapper.mapPhotoStats(photoStatsResponse)
+            } else  null
+
+
+        }
+    }
 }

@@ -39,7 +39,6 @@ class MainActivity : AppCompatActivity() , FullScreenListener, OnPhotoClickedLis
            // home_progress_bar.isVisible = it.isLoading
             if(it.isNullOrEmpty()){
                 // show error
-
                 layout_error.visibility = View.VISIBLE
             }else{
 
